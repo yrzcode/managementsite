@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>new-member</title>
+    <link rel="stylesheet" th:href="@{/css/new_member.css}">
+</head>
+<body>
+    <div id="input-form-container">
+        <h1>新規メンバー</h1>
+        <form id="input-form" th:action="@{add-new-member}" method="post" th:object="${memberForm}" >
+        
+            <label>名前
+                <input type="text" name="name" size="20">
+            </label>
+            <br><br>
+        
+            <label>性別
+                <select name="sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </label>
+            <br><br>
+        
+            <label>年齢
+                <input type="text" name="age" size="2">
+            </label>
+            <br><br>
+        
+            <label>住所
+                <input type="text" name="address" size="20">
+            </label>
+            <br><br>
+        
+            <label>電話番号
+                <input type="text" name="phone" size="20">
+            </label>
+            <br><br>
+        
+            <button>新規追加</button>
+        
+        </form>
+        
+        <table>
+            <tr th:if="${validationError}" th:each="error:${validationError}">
+                <td style="color: red">[[${error}]]</td>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+</html>
