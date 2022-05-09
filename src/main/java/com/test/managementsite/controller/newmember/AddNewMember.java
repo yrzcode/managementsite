@@ -5,6 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 import com.test.managementsite.data.MemberForm;
+import com.test.managementsite.service.IMemberManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
@@ -17,10 +20,19 @@ import java.util.List;
 
 @Controller
 public class AddNewMember {
-
+	
+	// field
     private static final String URL = "add-new-member";
+    private final IMemberManager memberManager;
+    
+    @Autowired
+    public AddNewMember(IMemberManager memberManager) {
+		this.memberManager = memberManager;
+	}
 
-    @GetMapping (URL)
+    
+    // mapping
+	@GetMapping (URL)
     public String GetAddNewMember(
             @ModelAttribute("memberForm")
                     MemberForm member
@@ -38,19 +50,26 @@ public class AddNewMember {
                     Model model
     ){
 
-
+    	// check input error 
         if (result.hasErrors()) {
+        	
+        	// print error message if has error
             List<String> errorList = new ArrayList<>();
             for (ObjectError error : result.getAllErrors()) {
                 errorList.add(error.getDefaultMessage());
             }
             model.addAttribute("validationError", errorList);
+            
+        }else {
+        	
+        	// add new member if input is ok
+            memberManager.addMember(member);
         }
-
+        
+        
         System.out.println(member);
         System.out.println(result);
-
-
+        
         return "new-member";
     }
 }
