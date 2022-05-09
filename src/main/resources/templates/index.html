@@ -2,17 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title><h1>株式会社ソフトユージング新人教育管理サイト</h1>
+    </title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
-<body>
-<h1>株式会社ソフトユージング新人教育管理サイト</h1>
-<h2>メニュー</h2>
 
-<form>
-    <button formaction="new-member">1.新規メンバー</button>
-    <button formaction="member-management">2.メンバー管理</button>
-    <button formaction="new-record">3.新規成績</button>
-    <button formaction="record-management">4.成績管理</button>
-</form>
+<body>
+
+    <div id="select-form-container">
+        <h1>株式会社ソフトユージング<br>新人教育管理サイト</h1>
+        <h2>メニュー</h2>
+        <form id="select-form">
+            <button formaction="new-member">1.新規zメンバー</button>
+            <button formaction="member-management">2.メンバー管理</button>
+            <button formaction="new-record">3.新規成績</button>
+            <button formaction="record-management">4.成績管理</button>
+        </form>
+    </div>
+
+    <footer style="text-align: right; margin: 0 auto; width: 800px;">
+        <p style="font-weight :bold;">
+            &copy;softusing.com
+        </p>
+    </footer>
+
 </body>
 </html>
