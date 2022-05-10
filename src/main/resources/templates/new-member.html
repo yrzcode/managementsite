@@ -67,15 +67,27 @@
             </table>
         </form>
 
-        <div style="padding: 16px 28px; border-radius: 8px; background: rgb(225, 237, 252);">
-            <table id="error-table">
+        <div id="result-form">
+
+            <h2 class="error-table-title" th:if="${validationError}">
+                入力に間違いがあります
+            </h2>
+
+            <h2 class="info-table-title" th:if="${insertResult}">
+                新規メンバーが登録されました!
+            </h2>
+
+            <table align="center">
                 <tr th:if="${validationError}" th:each="error:${validationError}">
-                    <td style="color: red">[[${error}]]</td>
+                    <td class="error-table-td">[[${error}]]</td>
+                </tr>
+                <tr th:if="${insertResult}" th:each="info:${insertResult}">
+                    <td class="info-table-td">[[${info.key}]]</td>
+                    <td style="width: 16px;"></td>
+                    <td class="info-table-td">[[${info.value}]]</td>
                 </tr>
             </table>
         </div>
     </div>
-
-
 </body>
 </html>

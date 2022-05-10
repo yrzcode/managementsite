@@ -1,5 +1,32 @@
 @charset "UTF-8";
 
+/*---utility--- */
+
+.text-center{
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse; 
+}
+
+h1{
+    margin: 36px auto 14px;
+    font-size: 40px;
+    text-align: center;
+    color: #3d41b4;
+
+}
+
+
+
+/* td{
+    border: 1px solid   black;
+} */
+
+
+/* ---input form--- */
+
 #input-form-container{
     display: flex;
     flex-direction: column;
@@ -9,21 +36,6 @@
     border: 1px solid gray;
     border-radius: 8px;
     background: rgb(217, 224, 247);
-}
-
-h1{
-    margin: 36px auto 14px;
-    font-size: 40px;
-    text-align: center;
-    color: #191b52;
-
-}
-
-h2{
-    margin-top: 12px;
-    font-size: 24px;
-    text-align: center;
-    color: #52548d;
 }
 
 #input-form{
@@ -49,11 +61,8 @@ h2{
     cursor: pointer;
     font-size: 20px;
     font-weight: 600;
+    color: #191564;
     background: rgba(174, 174, 241, 0.733);
-}
-
-table{
-    border-collapse: collapse; 
 }
 
 #input-table{
@@ -68,8 +77,36 @@ table{
     padding: 8px 0;
 }
 
-/* td{
-    border: 1px solid   black;
-} */
+
+/* ---info form--- */
+
+#result-form{
+    padding: 18px 16px 56px; 
+    border-radius: 8px;
+    background: rgb(225, 237, 252);
+}
+
+.error-table-td, .error-table-title{
+    color: rgb(243, 94, 94);
+    font-weight: 550;
+    font-size: 18px;
+}
+
+.info-table-td, .info-table-title{
+    color: rgb(114, 132, 233); 
+    font-weight: 550; 
+    font-size: 26px; 
+}
+
+#result-form h2{
+    font-size: 32px;
+    text-align: center;
+}
+
+
+
+
+
+
 
 

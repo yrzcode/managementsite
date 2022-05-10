@@ -7,4 +7,5 @@ public record Member(
 		String age,
 		String phone
 		) {
+	
 }

@@ -5,10 +5,6 @@
 		insert into member
 			 (name,sex,address,age,phone)
 		values(
-			 #{name},
-			 #{sex},
-			 #{address},
-			 #{age},
-			 #{phone})
+			 #{name}, #{sex}, #{address},#{age},#{phone})
 </insert>
 </mapper>

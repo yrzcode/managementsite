@@ -7,6 +7,8 @@ import org.springframework.validation.BindingResult;
 import com.test.managementsite.data.MemberForm;
 import com.test.managementsite.service.IMemberManager;
 
+import lombok.var;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.ObjectError;
@@ -54,22 +56,28 @@ public class AddNewMember {
         if (result.hasErrors()) {
         	
         	// print error message if has error
-            List<String> errorList = new ArrayList<>();
-            for (ObjectError error : result.getAllErrors()) {
-                errorList.add(error.getDefaultMessage());
-            }
+            var errorList = getErrorList(result);
             model.addAttribute("validationError", errorList);
             
         }else {
         	
         	// add new member if input is ok
             memberManager.addMember(member);
+            
+            // print new member message if add new member
+            var newMemberInfo = member.getInsertInfoMap();
+            model.addAttribute("insertResult", newMemberInfo);
         }
-        
-        
-        System.out.println(member);
-        System.out.println(result);
         
         return "new-member";
     }
+
+
+	private List<String> getErrorList(BindingResult result) {
+		List<String> errorList = new ArrayList<>();
+		for (ObjectError error : result.getAllErrors()) {
+		    errorList.add(error.getDefaultMessage());
+		}
+		return errorList;
+	}
 }
