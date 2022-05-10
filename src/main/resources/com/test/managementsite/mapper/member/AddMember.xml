@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.softusing.demo.mapper.AddMember">
+<mapper namespace="com.test.managementsite.mapper.member.AddMember">
 <insert id="addMember" parameterType="com.test.managementsite.data.MemberForm">
 		insert into member
 			 (name,sex,address,age,phone)
 		values(
-			 #{memberForm.name()},
-			 #{memberForm.sex()},
-			 #{memberForm.address()},
-			 #{memberForm.age()},
-			 #{memberForm.phone()})
+			 #{name},
+			 #{sex},
+			 #{address},
+			 #{age},
+			 #{phone})
 </insert>
 </mapper>
