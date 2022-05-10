@@ -11,7 +11,6 @@
 
     <div class="member-management-container">
 
-
         <div class="input-form-container">
 
             <div class="form-container">
@@ -19,24 +18,20 @@
                 <form class="input-form" th:action="@{add-new-member}" method="post" th:object="${memberForm}" >
                     <table class="input-table">
                         <tr>
+                            <td style="width: 20px"></td>
                             <td>
-                                名前    
+                                名前
                             </td>
-                            <td colspan="3">
-                                <input type="text" name="name" size="12">
+                            <td style="width: 48px">
+                                <input type="text" name="name" size="18">
                             </td>
-                            <td rowspan="2">
-                                <button type="button">検索</button>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>
                                 年齢
                             </td>
                             <td>
-                                <input type="text" name="age" size="2">
+                                <input type="text" name="age" size="8">
                             </td>
-                            <td style="text-align: right;">
+                            <td>
                                 性別
                             </td>
                             <td>
@@ -45,20 +40,25 @@
                                     <option value="女">女</option>
                                 </select>
                             </td>
+                            <td align="center" style="width: 100px">
+                                <button type="button">検索</button>
+                            </td>
                         </tr>
                     </table>
                 </form>
+
                 <div class="result-form">
         
-                    <h2 class="error-table-title" th:if="${validationError}">
-                        入力に間違いがあります
-                    </h2>
-        
-                    <h2 class="info-table-title" th:if="${insertResult}" style="font-size: 30px;">
-                        新規メンバーが登録されました!
-                    </h2>
-        
                     <table align="center">
+                        <tr>
+                            <th>名前</th>
+                            <th>年齢</th>
+                            <th>性別</th>
+                            <th style="width: 80px">電話番号</th>
+                            <th style="width: 200px">住所</th>
+                            <th style="width: 56px">操作</th>
+                        </tr>
+
                         <tr th:if="${validationError}" th:each="error:${validationError}">
                             <td class="error-table-td">[[${error}]]</td>
                         </tr>
@@ -68,30 +68,10 @@
                             <td class="info-table-td">[[${info.value}]]</td>
                         </tr>
                     </table>
+
                 </div>
             </div>
-    
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
     
