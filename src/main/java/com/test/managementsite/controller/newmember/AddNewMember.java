@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import com.test.managementsite.data.MemberForm;
 import com.test.managementsite.service.IMemberManager;
 
-import lombok.var;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
