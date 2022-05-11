@@ -53,10 +53,6 @@ h1{
     flex-direction: column;
 }
 
-.input-form label{
-    display: block;
-}
-
 .input-form button{
     width: 152px;
     height: 70px;
