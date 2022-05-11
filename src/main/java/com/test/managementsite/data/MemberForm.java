@@ -1,10 +1,10 @@
 package com.test.managementsite.data;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public record MemberForm (
         @NotBlank(message = "*名前を入力してください")

@@ -1,5 +1,5 @@
 package com.test.managementsite.mapper.record;
 
-public interface AddRecord {
+public interface UpdateRecord {
 
 }

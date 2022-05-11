@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import com.test.managementsite.data.MemberForm;
 import com.test.managementsite.service.IMemberManager;
 
+import lombok.var;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,15 +42,11 @@ public class AddNewMember {
         return "new-member";
     }
 
-    @PostMapping(URL)
-    public String PostAddNewMember(
-            @Validated
-            @ModelAttribute("memberForm")
-                    MemberForm member,
-                    BindingResult result,
-            @NotNull
-                    Model model
-    ){
+	@PostMapping(URL)
+	public String PostAddNewMember(
+			@Validated @ModelAttribute("memberForm") MemberForm member, 
+			BindingResult result,
+			@NotNull Model model) {
 
     	// check input error 
         if (result.hasErrors()) {
@@ -61,7 +58,7 @@ public class AddNewMember {
         }else {
         	
         	// add new member if input is ok
-            memberManager.addMember(member);
+            memberManager.insertMember(member);
             
             // print new member message if add new member
             var newMemberInfo = member.getInsertInfoMap();
@@ -75,7 +72,7 @@ public class AddNewMember {
 	private List<String> getErrorList(BindingResult result) {
 		List<String> errorList = new ArrayList<>();
 		for (ObjectError error : result.getAllErrors()) {
-		    errorList.add(error.getDefaultMessage());
+			errorList.add(error.getDefaultMessage());
 		}
 		return errorList;
 	}
