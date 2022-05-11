@@ -1,15 +1,14 @@
 package com.test.managementsite.controller.newmember;
 
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 import com.test.managementsite.data.MemberForm;
 import com.test.managementsite.service.IMemberManager;
 
-import lombok.var;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
@@ -21,18 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AddNewMember {
 	
 	// field
     private static final String URL = "add-new-member";
     private final IMemberManager memberManager;
-    
-    @Autowired
-    public AddNewMember(IMemberManager memberManager) {
-		this.memberManager = memberManager;
-	}
 
-    
+
     // mapping
 	@GetMapping (URL)
     public String GetAddNewMember(
@@ -44,7 +39,7 @@ public class AddNewMember {
 
 	@PostMapping(URL)
 	public String PostAddNewMember(
-			@Validated @ModelAttribute("memberForm") MemberForm member, 
+			@Validated @ModelAttribute("memberForm") MemberForm memberForm,
 			BindingResult result,
 			@NotNull Model model) {
 
@@ -58,10 +53,10 @@ public class AddNewMember {
         }else {
         	
         	// add new member if input is ok
-            memberManager.insertMember(member);
+            memberManager.insertMember(memberForm);
             
             // print new member message if add new member
-            var newMemberInfo = member.getInsertInfoMap();
+            var newMemberInfo = memberForm.getInsertInfoMap();
             model.addAttribute("insertResult", newMemberInfo);
         }
         

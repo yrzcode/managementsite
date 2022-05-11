@@ -6,20 +6,22 @@ import org.springframework.stereotype.Service;
 import com.test.managementsite.data.Member;
 import com.test.managementsite.data.MemberForm;
 import com.test.managementsite.mapper.member.InsertMember;
-import com.test.managementsite.mapper.member.SelectMemberName;
+import com.test.managementsite.mapper.member.SelectMemberByName;
+
+import java.util.List;
 
 @Service("memberManager")
 public class MemberManager implements IMemberManager {
 	
 	private final InsertMember insertMemberMapper;
-	private final SelectMemberName selectMemberNameMapper;
+	private final SelectMemberByName selectMemberByNameMapper;
 
 	@Autowired
 	public MemberManager(
 			InsertMember insertMemberMapper, 
-			SelectMemberName selectMemberNameMapper) {
+			SelectMemberByName selectMemberByNameMapper) {
 		this.insertMemberMapper = insertMemberMapper;
-		this.selectMemberNameMapper = selectMemberNameMapper;
+		this.selectMemberByNameMapper = selectMemberByNameMapper;
 	}
 
 	@Override
@@ -28,13 +30,12 @@ public class MemberManager implements IMemberManager {
 	}
 
 	@Override
-	public Member selectMember(String name) {
-		selectMemberNameMapper.selectMemberName(name);
-		return null;
+	public List<Member> selectMember(String name) {
+		return selectMemberByNameMapper.selectMemberByName(name);
 	}
 
 	@Override
-	public Member selectMember(String name, String Age) {
+	public List<Member> selectMember(String name, String Age) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}
