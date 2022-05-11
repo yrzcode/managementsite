@@ -12,7 +12,7 @@
         <div class="form-container">
             <div class="search-input-form-container">
                 <h1>メンバー管理</h1>
-                <form class="search-input-form" th:action="@{search-member}" method="post" th:object="${memberForm}" >
+                <form class="search-input-form" th:action="@{search-member}" method="post" th:object="${searchMemberForm}" >
                     <table class="search-input-table">
                         <tr>
                             <td>
@@ -64,8 +64,8 @@
                     </table>
                 </div>      
             </div>
-            <div class="update-input-form">
-                <form action="">
+            <div class="update-input-form"> 
+                <form th:action="@{update-member}" method="post" th:object="${updateMemberForm}">
                     <table class="update-input-table">
                         <tr>
                             <td>
@@ -110,18 +110,40 @@
                         </tr>
                         <tr id="button-tr">
                             <td colspan="2">
-                                <br>
-                                <button type="button" onclick="location.href='index'">
-                                    メニュー画面に戻る
-                                </button>
+                                <div class="button-div">
+                                    <button type="button" onclick="location.href='index'">
+                                        メニュー画面に戻る
+                                    </button>
+                                </div>
                             </td>   
                             <td colspan="2">
-                                <br>
-                                <button>更新する</button>
+                                <div class="button-div">
+                                    <button>更新する</button>
+                                </div>
                             </td>
                         </tr>
                     </table>              
                 </form>
+            </div>
+            <div class="result-form">
+                <h2 class="error-table-title" th:if="${validationError}">
+                    入力に間違いがあります
+                </h2>
+    
+                <h2 class="info-table-title" th:if="${insertResult}" style="font-size: 30px;">
+                    新規メンバーが登録されました!
+                </h2>
+    
+                <table align="center">
+                    <tr th:if="${validationError}" th:each="error:${validationError}">
+                        <td class="error-table-td">[[${error}]]</td>
+                    </tr>
+                    <tr th:if="${insertResult}" th:each="info:${insertResult}">
+                        <td class="info-table-td">[[${info.key}]]</td>
+                        <td style="width: 16px;"></td>
+                        <td class="info-table-td">[[${info.value}]]</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

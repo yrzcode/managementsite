@@ -18,11 +18,11 @@ h1{
     color: #3d41b4;
 }
 
-
-/*td,th{*/
-/*    border: 1px solid   black;*/
-/*}*/
-
+/* 
+td,th{
+  border: 1px solid   black;
+}
+ */
 
 /* -------- input form -------- */
 
@@ -45,7 +45,8 @@ h1{
     border-radius: 4px;
 }
 
-.search-input-form, .update-input-form{
+.search-input-form, 
+.update-input-form{
     width: 500px;
     margin: 8px auto 0;
     display: flex;
@@ -53,6 +54,20 @@ h1{
     flex-direction: column;
 }
 
+.update-input-form{
+    margin-bottom: 12px;
+}
+
+.update-input-form .button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 4px;
+}
+
+.update-input-form .button{
+    display: block;
+}
 
 .search-input-form button, 
 .update-input-form button{
@@ -67,11 +82,11 @@ h1{
     font-size: 18px;
 }
 
-
 .update-input-form button{
     width: 148px;
     height: 72px;
     margin: 0 12px;
+    border-radius: 4px;
 }
 
 .search-input-form button:hover, 
@@ -97,7 +112,6 @@ h1{
     padding: 8px 0;
 }
 
-
 .update-input-table td{
     padding: 8px;
     font-size: 20px;
@@ -106,26 +120,30 @@ h1{
 
 /* -------- info form -------- */
 
-.search-result-form{
+.search-result-form, 
+.result-form{
     padding: 18px 14px 56px;
     margin: 0px 32px 28px;
     border-radius: 4px;
     background: rgb(225, 237, 252);
 }
 
-.search-result-form h2{
+.search-result-form h2, 
+.result-form h2{
     font-size: 32px;
     text-align: center;
 }
 
-.search-result-form th{
+.search-result-form th, 
+.result-form th{
     width: 48px;
     height: 24px;
     font-size: 16px;
     color: #121577;
 }
 
-.search-result-form td,th{
+.search-result-form th,
+.search-result-form td{
     border: 1px solid rgb(133, 135, 155);
 }
 
