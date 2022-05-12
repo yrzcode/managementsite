@@ -1,6 +1,7 @@
 package com.test.managementsite.data;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -27,7 +28,7 @@ public record MemberForm (
         ) {
 		
 	public HashMap<String, String> getInsertInfoMap() {
-		HashMap<String, String> infoMap = new HashMap<>();
+		LinkedHashMap<String, String> infoMap = new LinkedHashMap<>();
 		
 		infoMap.put("名前", name);
 		infoMap.put("性別", sex);

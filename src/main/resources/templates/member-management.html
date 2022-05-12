@@ -37,7 +37,7 @@
                                 </select>
                             </td>
                             <td align="center" style="width: 100px">
-                                <button style="font-size: 14px">検索</button>
+                                <button style="font-size: 1 5px">検索</button>
                             </td>
                         </tr>
                     </table>
@@ -52,14 +52,15 @@
                             <th style="width: 200px">住所</th>
                             <th style="width: 56px">操作</th>
                         </tr>
-
-                        <tr th:if="${validationError}" th:each="error:${validationError}">
-                            <td class="error-table-td">[[${error}]]</td>
-                        </tr>
-                        <tr th:if="${insertResult}" th:each="info:${insertResult}">
-                            <td class="info-table-td">[[${info.key}]]</td>
-                            <td style="width: 16px;"></td>
-                            <td class="info-table-td">[[${info.value}]]</td>
+                        <tr th:if="${search_result_list}" th:each="result_member:${search_result_list}">
+                            <td>[[${result_member.name}]]</td>
+                            <td>[[${result_member.age}]]</td>
+                            <td>[[${result_member.sex}]]</td>
+                            <td>[[${result_member.phone}]]</td>
+                            <td style="text-align: left; padding-left: 4px;">[[${result_member.address}]]</td>
+                            <td>
+                                <button>変更</button>
+                            </td>     
                         </tr>
                     </table>
                 </div>      

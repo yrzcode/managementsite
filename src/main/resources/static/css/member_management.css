@@ -70,7 +70,9 @@ td,th{
 }
 
 .search-input-form button, 
-.update-input-form button{
+.update-input-form button,
+.search-result-form button
+{
     width: 72px;
     text-align: center;
     height: 28px;
@@ -90,7 +92,9 @@ td,th{
 }
 
 .search-input-form button:hover, 
-.update-input-form button:hover{
+.update-input-form button:hover,
+.search-result-form button:hover
+{
     cursor: pointer;
     font-size: 20px;
     font-weight: 600;
@@ -145,8 +149,20 @@ td,th{
 .search-result-form th,
 .search-result-form td{
     border: 1px solid rgb(133, 135, 155);
+    text-align: center;
+    font-size: 16px;
 }
 
+.search-result-form button{
+    color: #28245f;
+    font-size: 16px;
+    margin: 6px;
+}
+
+.search-result-form button:hover{
+    font-size: 18px;
+    background-color: #9392f3;
+}
 
 .error-table-td, .error-table-title{
     color: rgb(243, 94, 94);

@@ -7,22 +7,19 @@ import com.test.managementsite.data.Member;
 import com.test.managementsite.data.MemberForm;
 import com.test.managementsite.mapper.member.InsertMember;
 import com.test.managementsite.mapper.member.SelectMemberByName;
+import com.test.managementsite.mapper.member.SelectMemberByNameAge;
+
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @Service("memberManager")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class MemberManager implements IMemberManager {
 	
 	private final InsertMember insertMemberMapper;
 	private final SelectMemberByName selectMemberByNameMapper;
-
-	@Autowired
-	public MemberManager(
-			InsertMember insertMemberMapper, 
-			SelectMemberByName selectMemberByNameMapper) {
-		this.insertMemberMapper = insertMemberMapper;
-		this.selectMemberByNameMapper = selectMemberByNameMapper;
-	}
+	private final SelectMemberByNameAge selectMemberByNameAgeMapper;
 
 	@Override
 	public void insertMember(MemberForm memberForm) {
@@ -35,9 +32,8 @@ public class MemberManager implements IMemberManager {
 	}
 
 	@Override
-	public List<Member> selectMember(String name, String Age) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+	public List<Member> selectMember(String name, String age) {
+		return selectMemberByNameAgeMapper.selectMemberByNameAge(name, age);
 	}
 	
 }

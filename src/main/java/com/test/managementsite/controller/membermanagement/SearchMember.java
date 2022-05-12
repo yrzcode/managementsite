@@ -28,11 +28,14 @@ public class SearchMember {
 			@ModelAttribute
 			SearchMemberForm searchMemberForm) {
 
-		//select member from DB
+		//* search member from DB
 		var hasInputAge = !searchMemberForm.age().equals("");
 		var resultList = (hasInputAge)?
 				memberManager.selectMember(searchMemberForm.name(),searchMemberForm.age()) :
 				memberManager.selectMember(searchMemberForm.name());
+		
+		//* trans search result to front
+		model.addAttribute("search_result_list", resultList);
 
 
 		return "member-management";
