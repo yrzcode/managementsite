@@ -8,5 +8,7 @@
 			member
 		WHERE
 			name=#{name}
+		AND
+			sex=#{sex}
 </select>
 </mapper>

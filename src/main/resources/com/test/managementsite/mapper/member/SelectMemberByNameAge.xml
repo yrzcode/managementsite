@@ -9,6 +9,8 @@
 		WHERE
 			name=#{name}
 		AND
+			sex=#{sex}
+		AND
 			age=#{age}
 </select>
 </mapper>

@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface SelectMemberByName {
-		public List<Member> selectMemberByName(String name) ;
+		public List<Member> selectMemberByName(String name, String sex) ;
 }

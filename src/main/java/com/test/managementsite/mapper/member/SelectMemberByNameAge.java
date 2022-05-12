@@ -7,5 +7,5 @@ import com.test.managementsite.data.Member;
 
 @Mapper
 public interface SelectMemberByNameAge {
-	public List<Member> selectMemberByNameAge(String name, String age) ;
+	public List<Member> selectMemberByNameAge(String name, String sex, String age) ;
 }

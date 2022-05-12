@@ -8,8 +8,8 @@ import java.util.List;
 public interface IMemberManager {
 
 	public void insertMember(MemberForm memberForm);
-	public List<Member> selectMember(String name);
-	public List<Member> selectMember(String name, String Age);
+	public List<Member> selectMember(String name, String sex);
+	public List<Member> selectMember(String name, String sex, String Age);
 
 	
 	//public void deleteMember();

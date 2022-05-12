@@ -27,13 +27,13 @@ public class MemberManager implements IMemberManager {
 	}
 
 	@Override
-	public List<Member> selectMember(String name) {
-		return selectMemberByNameMapper.selectMemberByName(name);
+	public List<Member> selectMember(String name, String sex) {
+		return selectMemberByNameMapper.selectMemberByName(name, sex);
 	}
 
 	@Override
-	public List<Member> selectMember(String name, String age) {
-		return selectMemberByNameAgeMapper.selectMemberByNameAge(name, age);
+	public List<Member> selectMember(String name, String sex,  String age) {
+		return selectMemberByNameAgeMapper.selectMemberByNameAge(name, sex, age);
 	}
 	
 }
