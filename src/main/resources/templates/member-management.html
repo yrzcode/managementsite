@@ -52,16 +52,25 @@
                             <th style="width: 200px">住所</th>
                             <th style="width: 56px">操作</th>
                         </tr>
-                        <tr th:if="${search_result_list}" th:each="result_member:${search_result_list}">
-                            <td>[[${result_member.name}]]</td>
-                            <td>[[${result_member.age}]]</td>
-                            <td>[[${result_member.sex}]]</td>
-                            <td>[[${result_member.phone}]]</td>
-                            <td style="text-align: left; padding-left: 4px;">[[${result_member.address}]]</td>
-                            <td>
-                                <button>変更</button>
-                            </td>     
-                        </tr>
+                        <form th:action="@{update-member-form}" onsubmit="return false;">
+                            <tr th:if="${search_result_list}" th:each="result_member:${search_result_list}">
+                                <td id="result_member_name">[[${result_member.name}]]</td>
+                                <td id="result_member_age">[[${result_member.age}]]</td>
+                                <td id="result_member_sex">[[${result_member.sex}]]</td>
+                                <td id="result_member_phone">[[${result_member.phone}]]</td>
+                                <td id="result_member_address" style="text-align: left; padding-left: 4px;">[[${result_member.address}]]</td>
+                                <td>
+                                    <!-- <div style="display: block;">
+                                        <input type="text" name="name" th:value="${result_member.name}">
+                                        <input type="text" name="age" th:value="${result_member.age}">
+                                        <input type="text" name="sex" th:value="${result_member.sex}">
+                                        <input type="text" name="phone" th:value="${result_member.phone}">
+                                        <input type="text" name="address" th:value="${result_member.address}">
+                                    </div> -->
+                                    <button class="get-update-info-button">変更</button>
+                                </td>     
+                            </tr>
+                        </form>
                     </table>
                 </div>      
             </div>
@@ -73,7 +82,7 @@
                                 名前    
                             </td>
                             <td colspan="3">
-                                <input type="text" name="name" size="12">
+                                <input id="update-input-table-name" type="text" name="name" size="12">
                             </td>
                         </tr>
                         <tr>
@@ -81,13 +90,13 @@
                                 年齢
                             </td>
                             <td>
-                                <input type="text" name="age" size="2">
+                                <input id="update-input-table-age" type="text" name="age" size="2">
                             </td>
                             <td style="width: 80px; text-align: right;">
                                 性別
                             </td>
                             <td>
-                                <select name="sex">
+                                <select id="update-input-table-sex" name="sex">
                                     <option value="男">男</option>
                                     <option value="女">女</option>
                                 </select>
@@ -98,7 +107,7 @@
                                 住所
                             </td>
                             <td colspan="3">
-                                <input type="text" name="address" size="20">
+                                <input id="update-input-table-address" type="text" name="address" size="20">
                             </td>
                         </tr>
                         <tr>
@@ -106,7 +115,7 @@
                                 携帯番号
                             </td>
                             <td colspan="3">
-                                <input type="text" name="phone" size="20">
+                                <input id="update-input-table-phone" type="text" name="phone" size="20">
                             </td>
                         </tr>
                         <tr id="button-tr">
@@ -119,7 +128,7 @@
                             </td>   
                             <td colspan="2">
                                 <div class="button-div">
-                                    <button>更新する</button>
+                                    <button class="get-update-info-button" type="button">更新する</button>
                                 </div>
                             </td>
                         </tr>
@@ -151,4 +160,5 @@
     <div id="footer">
         <script>loadFooter();</script>
     </div>
+    <script src="js/member-management.js"></script>
 </body>

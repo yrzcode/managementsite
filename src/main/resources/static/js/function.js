@@ -12,8 +12,6 @@
 //     });
 
  function loadFooter(){
-    console.log(1);
-    console.log(2);
 
     $(function(){
         $("#footer").load("parts/footer.html");

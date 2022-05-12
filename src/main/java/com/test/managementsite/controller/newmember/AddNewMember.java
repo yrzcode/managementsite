@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
+import com.test.managementsite.controller.ControllerFunction;
 import com.test.managementsite.data.MemberForm;
 import com.test.managementsite.service.IMemberManager;
 
@@ -23,39 +24,38 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AddNewMember {
 	
-	// field
+	// * Field
     private static final String URL = "add-new-member";
     private final IMemberManager memberManager;
 
-
-    // mapping
+    // * Mapping
 	@GetMapping (URL)
     public String GetAddNewMember(
-            @ModelAttribute("memberForm")
-                    MemberForm member
+    		@ModelAttribute("memberForm")
+            MemberForm member
     ){
         return "new-member";
     }
 
 	@PostMapping(URL)
 	public String PostAddNewMember(
-			@Validated @ModelAttribute("memberForm") MemberForm memberForm,
+			@Validated @ModelAttribute("update-member-form") MemberForm memberForm,
 			BindingResult result,
-			@NotNull Model model) {
+			Model model) {
 
-    	// check input error 
+    	// 1. check input error 
         if (result.hasErrors()) {
         	
         	// print error message if has error
-            var errorList = getErrorList(result);
+            var errorList = ControllerFunction.getErrorList(result);
             model.addAttribute("validationError", errorList);
             
         }else {
         	
-        	// add new member if input is ok
+        	// 2. add new member if input is ok
             memberManager.insertMember(memberForm);
             
-            // print new member message if add new member
+            // 3. print new member message if add new member
             var newMemberInfo = memberForm.getInsertInfoMap();
             model.addAttribute("insertResult", newMemberInfo);
         }
@@ -63,12 +63,4 @@ public class AddNewMember {
         return "new-member";
     }
 
-
-	private List<String> getErrorList(BindingResult result) {
-		List<String> errorList = new ArrayList<>();
-		for (ObjectError error : result.getAllErrors()) {
-			errorList.add(error.getDefaultMessage());
-		}
-		return errorList;
-	}
 }

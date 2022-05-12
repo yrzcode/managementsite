@@ -18,6 +18,7 @@ public class SearchMember {
 
 	private final IMemberManager memberManager;
 
+	// * Mapping
 	@GetMapping("search-member")
 	public String getSearchMember() {
 		return "member-management";
