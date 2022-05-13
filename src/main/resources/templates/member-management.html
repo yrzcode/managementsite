@@ -52,7 +52,7 @@
                             <th style="width: 200px">住所</th>
                             <th style="width: 56px">操作</th>
                         </tr>
-                        <form th:action="@{update-member-form}" onsubmit="return false;">
+                        <form onsubmit="return false;">
                             <tr th:if="${search_result_list}" th:each="result_member:${search_result_list}">
                                 <td id="result_member_name">[[${result_member.name}]]</td>
                                 <td id="result_member_age">[[${result_member.age}]]</td>
@@ -75,14 +75,16 @@
                 </div>      
             </div>
             <div class="update-input-form"> 
-                <form th:action="@{update-member}" method="post" th:object="${updateMemberForm}">
+                <form id="update-member-form" th:action="@{update-member}" method="post" th:object="${updateMemberForm}">
                     <table class="update-input-table">
                         <tr>
                             <td>
                                 名前    
                             </td>
                             <td colspan="3">
-                                <input id="update-input-table-name" type="text" name="name" size="12">
+                                <!-- <input type="text" name="name" size="12"> -->
+                                <input class="name" type="text" name="name" size="12">
+                                <!-- <input id="update-input-table-name" type="text" name="name" size="12"> -->
                             </td>
                         </tr>
                         <tr>
@@ -90,13 +92,17 @@
                                 年齢
                             </td>
                             <td>
-                                <input id="update-input-table-age" type="text" name="age" size="2">
+                                <!-- <input name="age" size="2"> -->
+                                <input class="age" name="age" size="2">
+                                <!-- <input id="update-input-table-age" type="text" name="age" size="2"> -->
                             </td>
                             <td style="width: 80px; text-align: right;">
                                 性別
                             </td>
                             <td>
-                                <select id="update-input-table-sex" name="sex">
+                                <!-- <select name="sex"> -->
+                                <select class="sex" name="sex">
+                                <!-- <select id="update-input-table-sex" name="sex"> -->
                                     <option value="男">男</option>
                                     <option value="女">女</option>
                                 </select>
@@ -107,7 +113,9 @@
                                 住所
                             </td>
                             <td colspan="3">
-                                <input id="update-input-table-address" type="text" name="address" size="20">
+                                <!-- <input type="text" name="address" size="20"> -->
+                                <input class="address" type="text" name="address" size="20">
+                                <!-- <input id="update-input-table-address" type="text" name="address" size="20"> -->
                             </td>
                         </tr>
                         <tr>
@@ -115,7 +123,9 @@
                                 携帯番号
                             </td>
                             <td colspan="3">
-                                <input id="update-input-table-phone" type="text" name="phone" size="20">
+                                <!-- <input type="text" name="phone" size="20"> -->
+                                <input class="phone" type="text" name="phone" size="20">
+                                <!-- <input id="update-input-table-phone" type="text" name="phone" size="20"> -->
                             </td>
                         </tr>
                         <tr id="button-tr">
@@ -128,7 +138,7 @@
                             </td>   
                             <td colspan="2">
                                 <div class="button-div">
-                                    <button class="get-update-info-button" type="button">更新する</button>
+                                    <button form="update-member-form">更新する</button>
                                 </div>
                             </td>
                         </tr>
@@ -140,15 +150,15 @@
                     入力に間違いがあります
                 </h2>
     
-                <h2 class="info-table-title" th:if="${insertResult}" style="font-size: 30px;">
-                    新規メンバーが登録されました!
+                <h2 class="info-table-title" th:if="${updateResult}" style="font-size: 30px;">
+                    メンバー情報が更新されました!
                 </h2>
     
                 <table align="center">
                     <tr th:if="${validationError}" th:each="error:${validationError}">
                         <td class="error-table-td">[[${error}]]</td>
                     </tr>
-                    <tr th:if="${insertResult}" th:each="info:${insertResult}">
+                    <tr th:if="${updateResult}" th:each="info:${updateResult}">
                         <td class="info-table-td">[[${info.key}]]</td>
                         <td style="width: 16px;"></td>
                         <td class="info-table-td">[[${info.value}]]</td>

@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class SearchMember {
+public class SearchMemberFunction {
 
 	private final IMemberManager memberManager;
 

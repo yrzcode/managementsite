@@ -3,6 +3,7 @@ import lombok.Data;
 
 @Data
 public class Member{
+	Integer id;
 	String name;
 	String sex;
 	String address;
