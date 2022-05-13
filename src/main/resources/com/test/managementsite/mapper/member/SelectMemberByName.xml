@@ -3,7 +3,7 @@
 <mapper namespace="com.test.managementsite.mapper.member.SelectMemberByName">
 <select id="selectMemberByName" parameterType="String" resultType="com.test.managementsite.data.Member">
 		SELECT 
-			name,sex,address,age,phone
+			id,name,sex,address,age,phone
 		FROM
 			member
 		WHERE

@@ -44,11 +44,13 @@ public class AddNewMemberFunction {
 			var errorList = ControllerFunction.getErrorList(result);
 			model.addAttribute("validationError", errorList);
 
-			// 2. check if name is exist
-		} else if (hasUniqueNameError(memberForm)) {
-			var errorMessage = "*入力した名前はすでに存在しています";
-			model.addAttribute("validationError", errorMessage);
+//			// 2. check if name is exist
+//		} else if (hasUniqueNameError(memberForm)) {
+//			var errorMessage = "*入力した名前はすでに存在しています";
+//			model.addAttribute("validationError", errorMessage);
+			
 		} else {
+			
 			// 3. add new member if input is ok
 			memberManager.insertMember(memberForm);
 
